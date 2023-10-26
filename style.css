@@ -38,7 +38,6 @@ li a{
 .main{
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding:100px 0px;
 }
 .content{
@@ -54,11 +53,17 @@ li a{
     color:#f9faf8;
     margin:0;
 }
-#image {
+.image {
     text-align: center;
-    background-color: grey;
-    min-width: 500px;
-    flex: 0;
+    max-width: 500px;
+    flex: 0 0 0;
+}
+.image img{
+    width: 500px;
+    height: auto;
+}
+.image p {
+    margin: 0;
 }
 button{
     color:#f9faf8;
@@ -73,4 +78,38 @@ button:hover{
     background-color: #f9faf8;
     color:black;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 50px;
+}
+#information-header {
+    font-size: 36px;
+    font-weight: bolder;
+    color:#1F2937;
+}
+.subtext {
+    display: flex;
+    margin:50px 200px;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+.box{
+    flex:0 1 0;
+    
+}
+.box img {
+    border:3px solid #3882f6;
+    border-radius: 8px;
+    max-width: 250px;
+    
+}
+.box p{
+    color:#1F2937;
+    font-size: 18px;
+    text-align: center;
 }
