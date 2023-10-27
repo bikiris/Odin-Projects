@@ -113,3 +113,21 @@ button:hover{
     font-size: 18px;
     text-align: center;
 }
+
+
+.quote{
+    display:flex;
+    flex-direction: column;
+    padding: 40px 100px;
+    background-color: #e5e7eb;
+}
+.quote p{
+    font-size: 36px;
+    font-style: italic;
+    font-weight: lighter;
+    color: #1F2937;
+    margin:5px 0px;
+}
+#author {
+    text-align: right;
+}
