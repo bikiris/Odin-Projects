@@ -131,3 +131,30 @@ button:hover{
 #author {
     text-align: right;
 }
+
+
+.signup {
+    display: flex;
+    background-color: #3882f6;
+    color:#f0faf8;
+    margin: 100px;
+    border-radius: 8px;
+    padding:30px 130px;
+    justify-content: space-between;
+    align-items: center;
+}
+.signup-content {
+    flex: 1 1 auto;
+}
+#signup-title {
+    margin:5px 0;
+    font-size: 24px;
+}
+.signup-content p{
+    margin: 5px 0;
+    font-size: 18px;
+}
+.signup button{
+    border: 2px solid #f0faf8;
+
+}
