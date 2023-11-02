@@ -15,6 +15,7 @@ function getComputerChoice(){
 }
 
 function playRound(playerSelection, computerSelection){
+
     playerSelection = playerSelection.toUpperCase()
     computerSelection = computerSelection.toUpperCase()
     if(playerSelection == computerSelection) return "Draw";
@@ -30,12 +31,21 @@ function playRound(playerSelection, computerSelection){
 }
 
 function game(){
+    let playerScore = 0;
+    let computerScore = 0;
     for(let i = 0; i < 5; i++){
         const playerSelection = prompt("Pick rock, paper, or scissors");
         const computerSelection = getComputerChoice();
+        let result = playRound(playerSelection, computerSelection)
         console.log("You picked " + playerSelection);
         console.log("Computer picked " + computerSelection);
-        console.log("You " + playRound(playerSelection, computerSelection));
+        console.log("You " + result);
+        if(result == "Win"){
+            playerScore++;
+        }else if(result == "Lose"){
+            computerScore++;
+        }
+        console.log("Your score is: " + playerScore + "\nComputer score is: " + computerScore);
     }
 }
 game();
