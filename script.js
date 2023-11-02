@@ -19,14 +19,7 @@ function playRound(playerSelection, computerSelection){
     playerSelection = playerSelection.toUpperCase()
     computerSelection = computerSelection.toUpperCase()
     if(playerSelection == computerSelection) return "Draw";
-    if(playerSelection == "ROCK"){
-        if(computerSelection == "PAPER") return "Lose";
-        return "Win";
-    }else if(playerSelection == "PAPER"){
-        if(computerSelection == "SCISSORS") return "Lose";
-        return "Win";
-    }else if(computerSelection == "ROCK") return "Lose";
-
+    if((playerSelection == "ROCK" && computerSelection == "PAPER") || (playerSelection == "PAPER" && computerSelection == "SCISSORS") || (playerSelection == "SCISSORS" && computerSelection == "ROCK")) return "Lose";
     return "Win";
 }
 
