@@ -22,6 +22,16 @@ function playRound(playerSelection, computerSelection){
     if((playerSelection == "ROCK" && computerSelection == "PAPER") || (playerSelection == "PAPER" && computerSelection == "SCISSORS") || (playerSelection == "SCISSORS" && computerSelection == "ROCK")) return "Lose";
     return "Win";
 }
+function checkScore(ps,cs){
+    if(ps == 5){
+        alert('You won');
+        return true;
+    }else if(cs == 5){
+        alert('CPU won');
+        return true;
+    }
+    return false;
+}
 
 function game(){
     const buttonChoice = document.querySelector('.buttons');
@@ -40,6 +50,10 @@ function game(){
             ps++;
         }else if(result=='Lose'){
             cs++;
+        } 
+        if(checkScore(ps,cs)){
+            ps = 0;
+            cs = 0;
         }
         playerScore.textContent = 'Your score is ' + ps;
         computerScore.textContent = 'Computer score is ' + cs;
