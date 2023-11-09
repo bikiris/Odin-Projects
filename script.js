@@ -24,22 +24,28 @@ function playRound(playerSelection, computerSelection){
 }
 
 function game(){
-    let playerScore = 0;
-    let computerScore = 0;
-    for(let i = 0; i < 5; i++){
-        const playerSelection = prompt("Pick rock, paper, or scissors");
-        const computerSelection = getComputerChoice();
-        let result = playRound(playerSelection, computerSelection)
-        console.log("You picked " + playerSelection);
-        console.log("Computer picked " + computerSelection);
-        console.log("You " + result);
-        if(result == "Win"){
-            playerScore++;
-        }else if(result == "Lose"){
-            computerScore++;
+    const buttonChoice = document.querySelector('.buttons');
+    let playerChoice = 'null';
+    const choice = document.querySelector('.display');
+    const playerScore = document.querySelector('.playerScore');
+    let ps = 0;
+    const computerScore = document.querySelector('.computerScore');
+    let cs = 0;
+   
+    buttonChoice.addEventListener('click', (event)=>{
+        playerChoice = event.target.id;
+        choice.textContent = 'You choose ' + playerChoice;
+        const result = playRound(playerChoice,getComputerChoice());
+        if(result=='Win'){
+            ps++;
+        }else if(result=='Lose'){
+            cs++;
         }
-        console.log("Your score is: " + playerScore + "\nComputer score is: " + computerScore);
-    }
+        playerScore.textContent = 'Your score is ' + ps;
+        computerScore.textContent = 'Computer score is ' + cs;
+    });
+    
+
 }
 game();
 
