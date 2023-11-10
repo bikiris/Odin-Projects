@@ -35,7 +35,6 @@ function checkScore(ps,cs){
 
 function game(){
     const buttonChoice = document.querySelector('.buttons');
-    let playerChoice = 'null';
     const choice = document.querySelector('.display');
     const playerScore = document.querySelector('.playerScore');
     let ps = 0;
@@ -43,7 +42,7 @@ function game(){
     let cs = 0;
    
     buttonChoice.addEventListener('click', (event)=>{
-        playerChoice = event.target.id;
+        const playerChoice = event.target.id;
         choice.textContent = 'You choose ' + playerChoice;
         const result = playRound(playerChoice,getComputerChoice());
         if(result=='Win'){
