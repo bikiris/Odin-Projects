@@ -1,0 +1,15 @@
+.content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.box{
+    flex: 0 0 20%;
+    height: auto;
+    border: 1px solid red;
+}
+.box:before {
+    content: '';
+    display: table;
+    padding-top: 100%;
+}
