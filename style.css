@@ -1,12 +1,26 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .content{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    flex-direction: column;
+    height: 500px;
+    width: 500px;
 }
-.box{
-    flex: 0 0 20%;
+.row {
+    flex: 1 0 0;
     height: auto;
-    border: 1px solid red;
+    display: flex;
+}
+
+.box{
+    flex: auto;
+    border: 1px solid #ff000080;
 }
 .box:before {
     content: '';
@@ -15,8 +29,6 @@
 }
 
 .prompt {
-    display: flex;
-    justify-content: center;
     align-items: center;
     margin-bottom: 10px;
 }
