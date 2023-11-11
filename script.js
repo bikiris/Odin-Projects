@@ -39,6 +39,9 @@ function addHover(){
 }
 
 function changeColor(event){
-    event.target.style.backgroundColor = "red";
+    let red = Math.floor(Math.random() * 255);
+    let green = Math.floor(Math.random() * 255);
+    let blue = Math.floor(Math.random() * 255);
+    event.target.style.backgroundColor = `rgb(${red},${green},${blue})`;
 }
 
