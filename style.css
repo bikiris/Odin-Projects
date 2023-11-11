@@ -13,3 +13,10 @@
     display: table;
     padding-top: 100%;
 }
+
+.prompt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
