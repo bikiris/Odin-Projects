@@ -14,23 +14,6 @@ function createGrid(gridSize){
     }
 }
 
-
-
-
-
-const btn = document.querySelector(".btn");
-let gridSize = 0;
-btn.addEventListener('click', ()=> {
-    gridSize = prompt("Enter your grid size." , 0);
-    if(gridSize > 100){
-        alert("Grid size is too large");
-        return;
-    }
-    createGrid(gridSize);
-    addHover();
-    
-});
-
 function addHover(){
     const box = document.querySelectorAll(".box");
     box.forEach((element) => {
@@ -45,3 +28,16 @@ function changeColor(event){
     event.target.style.backgroundColor = `rgb(${red},${green},${blue})`;
 }
 
+function init() {
+    const gridSize = prompt("Enter your grid size." , 0);
+    if(gridSize > 100){
+        alert("Grid size is too large");
+        return;
+    }
+    createGrid(gridSize);
+    addHover();
+}
+
+
+const btn = document.querySelector(".btn");
+btn.addEventListener('click', init);
