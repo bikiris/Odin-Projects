@@ -1,0 +1,19 @@
+*{
+  margin:0;
+  padding:0;
+}
+.main {
+  display: flex;
+  align-items: stretch;
+  width: 100vw;
+  height: 100vh;
+}
+.card-container{
+  flex: 1 1 auto;
+  width: 34%;
+  border: 1px solid black;
+}
+.right{
+  flex: 1 1 auto;
+  width: 66%;
+}
