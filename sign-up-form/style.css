@@ -1,6 +1,7 @@
 *{
   margin:0;
   padding:0;
+  font-family: sans-serif;
 }
 .main {
   display: flex;
@@ -12,6 +13,18 @@
   flex: 1 1 auto;
   width: 34%;
   border: 1px solid black;
+  background-image: url('./background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.card-body{
+  margin-top: 20vh;
+  padding: 2vh;
+  background: black;
+  opacity:0.6;
+  color: white;
+  text-align: center;
 }
 .right{
   flex: 1 1 auto;
