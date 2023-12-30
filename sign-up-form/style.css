@@ -2,6 +2,15 @@
   margin:0;
   padding:0;
   font-family: sans-serif;
+  caret-color: white;
+}
+@font-face{
+  font-family: norse-bold;
+  src: url(https://cdn.statically.io/gh/TheOdinProject/theodinproject/efdc2888072f409e687d31dc580595dbe4fe0ff4/app/assets/fonts/Norse-Bold.otf);
+}
+a{
+  text-decoration: none;
+  color: #596D48
 }
 .main {
   display: flex;
@@ -21,44 +30,77 @@
 .card-body{
   margin-top: 20vh;
   padding: 2vh;
-  background: black;
-  opacity:0.6;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card-body p{
   color: white;
   text-align: center;
+  font-family: norse-bold;
+  font-size: 100px;
 }
+.logo{
+  width: 20%;
+}
+
 .right{
   flex: 1 1 auto;
   width: 60%;
   display: flex;
   flex-direction: column;
   justify-content:center;
+  background-color: black;
+  color:white;
+  font-weight: 700;
+}
+.quote,
+.login{
   padding: 3vw;
+}
+.quote{
+  font-size: x-large;
+
 }
 form{
   display: flex;
   flex-direction: column;
-  margin: 2vh 0;
+  margin-top: 5vh;
+  padding: 3vw;
+  background-color: rgb(20, 20, 20);
+  box-shadow:  0px 1px 3px rgb(48, 47, 47);
 }
 fieldset{
   border: none;
+  font-size: large;
 }
 .row{
   display: flex;
   justify-content:space-between;
   gap: 3vw;
-  margin:2vh 0;
+  margin: 2vh 0;
+  font-weight: 100;
   
 }
 .item{
+  font-size: medium;
   display:flex;
   flex-direction: column;
   flex: auto;
 }
-.submit{
-  flex: 0 0 auto;
-  align-self: flex-start;
+input{
+  outline: 0;
+  border: 0;
+  background-color: rgb(20, 20, 20) ;
+  border-bottom: 1px solid rgb(200,200,200);
+  height: 40px;
+  font-size: 20px;
+  font-size: auto;
+  padding-top: 0px;
+  color: white;
+  
 }
-
 input[type=number]{
   -moz-appearance: textfield;
 }
@@ -67,9 +109,27 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-input::focus{
-  border:blue;
+input:focus{
+  border-bottom: 1px solid Green;
 }
-input::invalid{
-  border: red;
+input:invalid{
+  border-bottom: 1px solid Green;
+}
+.submit{
+  flex: 0 0 auto;
+  align-self: flex-start;
+  background-color: #596D48;
+  margin-top: 1vh;
+  padding: 15px 6vw;
+  border-radius: 5px;
+  border: 1px white;
+  color: white;
+  cursor: pointer;
+  font-size: large;
+}
+.submit:hover{
+  background-color: #3b472f;
+}
+.login{
+  font-size: large;
 }
