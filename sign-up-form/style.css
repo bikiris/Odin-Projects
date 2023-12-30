@@ -114,7 +114,7 @@ input:focus{
   border-bottom: 1px solid Green;
 }
 input:invalid{
-  border-bottom: 1px solid Green;
+  border-bottom: 1px solid red;
 }
 .submit{
   flex: 0 0 auto;
