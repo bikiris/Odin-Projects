@@ -1,6 +1,8 @@
 *{
   margin: 0;
   padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: calc(16px + 0.390625vw);
 }
 
 li{
@@ -28,25 +30,52 @@ li{
   display: grid;
   grid-template-rows: minmax(150px, 1fr) 7fr;
   gap: 20px;
+  padding: 0 5%;
+}
+
+.sidebar span{
+  cursor: pointer;
+  color: white;
+  text-shadow: 0 0 4px black;
 }
 
 .logo{
-  font-size: 50px;
-  background-color: red;
+  fill: white;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.logo svg{
+  flex: 0 0 50%;
+}
+
+.logo span{
+  padding-bottom: 10%;
+  text-shadow: 0 0 1px;
 }
 
 .navbar ul{
-  background-color: red;
-  display: grid;
-  grid-template-rows: repeat(auto-fit, 1fr);
-  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .navbar li{
-  background-color: orange;
-  align-self: center;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.5rem;
+  height:3vh;
 }
 
+.navbar svg{
+  flex: 0 1 auto;
+  height: 1.4em;
+  width: 1.4em;
+  fill: white;
+}
 
 .main-content{
   padding: 20px;
