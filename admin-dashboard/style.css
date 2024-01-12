@@ -123,6 +123,19 @@ li {
   border-radius: 50%;
 }
 
+/* welcome */
+.welcome {
+  display: flex;
+  padding: 0 1em;
+}
+
+.welcome .avatar {
+  flex: 0 0 auto;
+  width: 2.5em;
+  height: 2.5em;
+  margin-right: 1em;
+}
+
 .main-content {
   padding: 20px;
   background-color: #dbeafe;
