@@ -4,10 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <script src="script.js"></script>
     <title>Library</title>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="header">
+            <h1>Library</h1>
+            <button class="add-book">Add New Book</button>
+        </div>
+
+        <div class="main-content">
+            <div class="card">
+                <div class="book-detail">
+                    <p class="author">Author</p>
+                    <p class="title">Title</p>
+                    <p class="page-numbers">Pages</p>    
+                </div>
+                <div class="actions">
+                    <button class="edit">Edit</button>
+                    <button class="delete">Delete</button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="book-detail">
+                    <p class="author">Author</p>
+                    <p class="title">Title</p>
+                    <p class="page-numbers">Pages</p>    
+                </div>
+                <div class="actions">
+                    <button class="edit">Edit</button>
+                    <button class="delete">Delete</button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="book-detail">
+                    <p class="author">Author</p>
+                    <p class="title">Title</p>
+                    <p class="page-numbers">Pages</p>    
+                </div>
+                <div class="actions">
+                    <button class="edit">Edit</button>
+                    <button class="delete">Delete</button>
+                </div>
+            </div>
+        </div>
+
+        <form class="form" action="/" method="GET">
+            <label for="title">Title:</label>
+            <input id="title" name="title" type="text" placeholder="Book Title">
+
+            <label for="author">Author:</label>
+            <input id="author" name="author" type="text" placeholder="Author">
+
+            <label for="pages">Number of pages</label>
+            <input id="pages" name="pages" type="number" placeholder="Pages">
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
