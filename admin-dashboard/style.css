@@ -203,9 +203,6 @@ li {
   flex-direction: column;
   gap: 10px;
   justify-content: center;
-}
-
-.announcement-card {
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
@@ -214,11 +211,24 @@ li {
   border-radius: 12px;
 }
 
-.announcement{
+.announcement {
   padding-bottom: 1rem;
   border-bottom: 1px solid grey;
 }
 
-.announcement:last-child{
+.announcement:last-child {
   border-bottom: 0;
+}
+
+/* trending */
+
+.trending-user {
+  display: flex;
+  gap: 1em;
+}
+
+.trending-user img{
+  grid-row: 1 / 3;
+  width: 2.5em;
+  height: auto;
 }
