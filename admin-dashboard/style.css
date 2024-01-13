@@ -195,6 +195,7 @@ li {
   height: auto;
 }
 
+/* announcement */
 .announcement-card,
 .trending-users {
   background-color: white;
@@ -202,4 +203,22 @@ li {
   flex-direction: column;
   gap: 10px;
   justify-content: center;
+}
+
+.announcement-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 1rem;
+  margin-top: 1rem;
+  border-radius: 12px;
+}
+
+.announcement{
+  padding-bottom: 1rem;
+  border-bottom: 1px solid grey;
+}
+
+.announcement:last-child{
+  border-bottom: 0;
 }
