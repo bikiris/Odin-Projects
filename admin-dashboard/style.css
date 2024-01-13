@@ -9,10 +9,14 @@ li {
   list-style-type: none;
 }
 
+.avatar {
+  border-radius: 50%;
+}
+
 .container {
   display: grid;
   grid-template-columns: minmax(150px, 20%) minmax(450px, 80%);
-  grid-template-rows: 150px auto;
+  grid-template-rows: 175px auto;
   height: 100vh;
 }
 
@@ -22,6 +26,7 @@ li {
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: 65% 35%;
   align-items: center;
+  padding: 0.5rem 1rem;
 }
 
 .sidebar {
@@ -30,7 +35,11 @@ li {
   display: grid;
   grid-template-rows: minmax(150px, 1fr) 7fr;
   gap: 20px;
-  padding: 0 5%;
+  padding: 0 1rem;
+}
+
+.your-projects {
+  grid-row: 1 / 3;
 }
 
 /* Sidebar elements */
@@ -49,11 +58,12 @@ li {
 }
 
 .logo svg {
-  flex: 0 0 50%;
+  /* flex: 0 0 50%; */
+  width: 6rem;
 }
 
 .logo span {
-  padding-bottom: 10%;
+  padding-bottom: 1.2rem;
   text-shadow: 0 0 1px;
 }
 
@@ -82,13 +92,14 @@ li {
 .search-bar {
   display: flex;
   align-items: center;
-  padding: 0 1vw;
+  padding: 0 1rem;
   gap: 0.5em;
 }
 
 .search-bar label {
-  width: 30px;
-  height: auto
+  flex: 0 0 auto;
+  width: 2em;
+  height: auto;
 }
 
 .search-bar input {
@@ -97,7 +108,6 @@ li {
   border: 0;
   border-radius: 16px;
   padding: 0.5em 0.6em;
-  min-width: 100px;
 }
 
 .profile-setting {
@@ -110,17 +120,13 @@ li {
 .profile-setting svg,
 .profile-setting .avatar {
   flex: 0 0 auto;
-  width: 30px;
+  width: 2em;
   height: auto;
 }
 
 .profile-setting .avatar {
   margin-left: 1em;
   margin-right: 0.5em;
-}
-
-.avatar {
-  border-radius: 50%;
 }
 
 /* welcome */
@@ -139,7 +145,8 @@ li {
 /* actions */
 .actions {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: end;
+  gap: 1rem;
 }
 
 .actions button {
@@ -162,11 +169,12 @@ li {
   gap: 1rem;
 }
 
-/* project section */
-.your-projects {
-  grid-row: 1 / 3;
+/* main-content section */
+.main-content p{
+  color:#475569;
 }
 
+/* project section */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
