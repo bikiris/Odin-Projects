@@ -29,6 +29,7 @@ button {
     padding: 2rem;
 }
 
+/* book container */
 .card {
     display: flex;
     flex-direction: column;
@@ -63,8 +64,14 @@ button {
     border-bottom-right-radius: 12px;
 }
 
+/* form */ 
 form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 2rem;
+}
+
+.hidden {
+    display: none;
 }
