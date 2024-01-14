@@ -8,6 +8,7 @@ function Book(title, author, pages) {
   };
 }
 
+//add book card to HTML
 function addBookToLibrary(book) {
   const card = document.createElement("div");
   card.className = "card";
@@ -35,9 +36,14 @@ function addBookToLibrary(book) {
   actions.appendChild(b2);
   card.appendChild(actions);
 
-  
   document.querySelector(".main-content").appendChild(card);
-  myLibrary.push(book);
+}
+
+function updateLibrary(){
+    document.querySelector(".main-content").innerHTML = "";
+    myLibrary.forEach((book) => {
+        addBookToLibrary(book);
+    })
 }
 
 //new book page toggle
@@ -54,9 +60,7 @@ const submitForm = document.querySelector(".form");
 submitForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const info = event.target;
-  for (let i = 0; i < 3; i++) {
-    console.log(event.target[i]);
-  }
   const newBook = Book(info[0].value, info[1].value, info[2].value);
-  addBookToLibrary(newBook);
+  myLibrary.push(newBook);
+  updateLibrary();
 });
