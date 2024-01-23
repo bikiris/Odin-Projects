@@ -77,10 +77,7 @@ function updateLibrary(newBook){
 const addNewBook = document.querySelector(".add-book");
 const form = document.querySelector(".form");
 const mainContent = document.querySelector(".main-content");
-addNewBook.addEventListener("click", () => {
-  form.classList.toggle("hidden");
-  mainContent.classList.toggle("hidden");
-});
+addNewBook.addEventListener("click", () => toggleTab());
 
 //submit new book request
 const submitForm = document.querySelector(".form");
@@ -89,7 +86,14 @@ submitForm.addEventListener("submit", (event) => {
   const info = event.target;
   const newBook = Book(info[0].value, info[1].value, info[2].value);
   updateLibrary(newBook);
+  toggleTab();
+  submitForm.reset();
 });
+
+function toggleTab(){
+  form.classList.toggle("hidden");
+  mainContent.classList.toggle("hidden");
+}
 
 function init(){
   updateLibrary(Book("Title", "Author", "Pages"));
