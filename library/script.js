@@ -48,19 +48,22 @@ function addBookToLibrary(book) {
 
 function deleteBook(book,button){
   //remove from myLibrary
-  let index = -1;
-  myLibrary.forEach( (item,idx) => {
-    if(item.title == book.title
-        && item.author == book.author
-        && item.pages == book.pages){
-          index = idx;
-      }
-  })
+  let index = findBook(book);
   myLibrary.splice(index, 1);
 
   //remove from DOM
   const card = button.parentNode.parentNode;
   card.remove();
+}
+
+function findBook(book){
+  myLibrary.forEach( (item,idx) => {
+    if(item.title == book.title
+        && item.author == book.author
+        && item.pages == book.pages){
+          return idx;
+      }
+  })
 }
 
 function updateLibrary(newBook){
