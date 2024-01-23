@@ -23,27 +23,54 @@ function addBookToLibrary(book) {
     bookDetails.appendChild(temp);
   }
   card.appendChild(bookDetails);
+
   //actions
   const actions = document.createElement("div");
   actions.className = "actions";
+
+  //edit button
   const b1 = document.createElement("button");
   b1.className = "edit";
   b1.innerHTML = "Edit";
-  actions.appendChild(b1);
-  const b2 = document.createElement("button")
+  
+  //delete button
+  const b2 = document.createElement("button");
   b2.className = "delete";
   b2.innerHTML = "Delete";
+
+  //append to library
+  actions.appendChild(b1);
   actions.appendChild(b2);
   card.appendChild(actions);
-
+  b2.addEventListener("click", () => deleteBook(book,b2));
   document.querySelector(".main-content").appendChild(card);
 }
 
-function updateLibrary(){
-    document.querySelector(".main-content").innerHTML = "";
-    myLibrary.forEach((book) => {
-        addBookToLibrary(book);
-    })
+function deleteBook(book,button){
+  //remove from myLibrary
+  let index = -1;
+  myLibrary.forEach( (item,idx) => {
+    if(item.title == book.title
+        && item.author == book.author
+        && item.pages == book.pages){
+          index = idx;
+      }
+  })
+  myLibrary.splice(index, 1);
+
+  //remove from DOM
+  const card = button.parentNode.parentNode;
+  card.remove();
+}
+
+function updateLibrary(newBook){
+  myLibrary.push(newBook);
+  // updates library with every new book leads to performance issue
+  // document.querySelector(".main-content").innerHTML = "";
+  // myLibrary.forEach((book) => {
+  //     addBookToLibrary(book);
+  // })
+  addBookToLibrary(newBook);
 }
 
 //new book page toggle
@@ -61,6 +88,10 @@ submitForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const info = event.target;
   const newBook = Book(info[0].value, info[1].value, info[2].value);
-  myLibrary.push(newBook);
-  updateLibrary();
+  updateLibrary(newBook);
 });
+
+function init(){
+  updateLibrary(Book("Title", "Author", "Pages"));
+}
+init();
