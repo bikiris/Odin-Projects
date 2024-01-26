@@ -150,8 +150,60 @@ function GameController(PlayerOne, PlayerTwo){
   const reset = () => {
     //reset board
   }
+
+  const getB = () => {
+    board.getBoard();
+  }
   
-  return { playRound, getActivePlayer, printRound };
+  return { playRound, getActivePlayer, getBoard };
 }
 
-const game = GameController('one' , 'two');
+
+function ScreenController(){
+  const game = GameController("PlayerOne" ,"PlayerTwo");
+  const boardDiv = document.querySelector(".board");
+  const turnDiv = document.querySelector(".turn");
+
+  const updateScreen = () => {
+    //clear the board
+    boardDiv.textContent = "";
+
+    //get the newest board
+    const board = game.getBoard();
+    const playerTurn = game.getActivePlayer();
+
+    //display active player
+    turnDiv.textContent = `It is ${playerTurn}'s turn`;
+    
+    //render board
+    board.forEach((row, i) => {
+      row.forEach((item, j) => {
+        const cell = document.createElement("button");
+        cell.classList.add("cell");
+        cell.dataset.row = i;
+        cell.dataset.col = j;
+        cell.textContent = item.getValue();
+        boardDiv.appendChild(cell);
+      })
+    })
+  }
+
+  function clickEventHandler(e) {
+    const selectedRow = e.target.dataset.col;
+    const selectedCol = e.target.dataset.row;
+
+    //make sure the board is selected
+    if(!selectedRow) return;
+
+    game.playRound(selectedRow, selectedCol);
+    updateScreen();
+  }
+  boardDiv.addEventListener("click", clickEventHandler);
+
+  updateScreen();
+}
+
+ScreenController();
+
+
+
