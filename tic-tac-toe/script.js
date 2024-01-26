@@ -28,10 +28,11 @@ function Gameboard(){
 
   const addToken = (player, row, col) => {
     if(board[row][col].getValue() != 0) {
-      console.log("This cell is used");
+      return false;
     }else{
       board[row][col].setValue(player);
     }
+    return true;
   }
 
   const printBoard = () => {
@@ -79,10 +80,16 @@ function GameController(PlayerOne, PlayerTwo){
 
   const playRound = (row, col) => {
     //need check if token is valid
-    board.addToken(getActivePlayer().token, row, col);
-    checkWinner();
-    switchPlayerTurn();
-    printRound();
+    if(!board.addToken(getActivePlayer().token, row, col)){
+      console.log("Invalid play, try again");
+      return;
+    }
+    if(checkWinner()){
+      announceWinner();
+    }else{
+      switchPlayerTurn();
+      printRound();
+    }
   }
 
   const checkWinner = () => {
@@ -98,7 +105,7 @@ function GameController(PlayerOne, PlayerTwo){
         sum += tempBoard[i][j].getValue();
       }
       if(sum === getActivePlayer().token * rows) {
-        announceWinner();
+        return true;
       }
     }
     
@@ -109,7 +116,7 @@ function GameController(PlayerOne, PlayerTwo){
         sum += tempBoard[i][j].getValue();
       }
       if(sum === getActivePlayer().token * rows) {
-        announceWinner();
+        return true;
       }
     }
 
@@ -119,7 +126,7 @@ function GameController(PlayerOne, PlayerTwo){
       sum += tempBoard[i][i].getValue();
     }
     if(sum === getActivePlayer().token * rows) {
-      announceWinner();
+      return true;
     }
   
     //bottom left diag checker
@@ -128,8 +135,10 @@ function GameController(PlayerOne, PlayerTwo){
       sum += tempBoard[i][rows-i-1].getValue();
     }
     if(sum === getActivePlayer().token * rows) {
-      announceWinner();
+      return true;
     }
+
+    return false;
   }
 
   const announceWinner = () => {
