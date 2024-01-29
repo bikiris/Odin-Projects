@@ -151,8 +151,8 @@ function GameController(PlayerOne, PlayerTwo){
     //reset board
   }
 
-  const getB = () => {
-    board.getBoard();
+  const getBoard = () => {
+    return board.getBoard();
   }
   
   return { playRound, getActivePlayer, getBoard };
@@ -204,6 +204,3 @@ function ScreenController(){
 }
 
 ScreenController();
-
-
-
