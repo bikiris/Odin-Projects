@@ -173,7 +173,7 @@ function ScreenController(){
     const playerTurn = game.getActivePlayer();
 
     //display active player
-    turnDiv.textContent = `It is ${playerTurn}'s turn`;
+    turnDiv.textContent = `It is ${playerTurn.name}'s turn`;
     
     //render board
     board.forEach((row, i) => {
@@ -189,8 +189,8 @@ function ScreenController(){
   }
 
   function clickEventHandler(e) {
-    const selectedRow = e.target.dataset.col;
-    const selectedCol = e.target.dataset.row;
+    const selectedRow = e.target.dataset.row;
+    const selectedCol = e.target.dataset.col;
 
     //make sure the board is selected
     if(!selectedRow) return;
