@@ -153,13 +153,14 @@ function GameController(PlayerOne, PlayerTwo){
   const reset = () => {
     winner = false;
     board.reset();
+    activePlayer = players[0];
   }
 
   const getBoard = () => {
     return board.getBoard();
   }
   
-  return { playRound, getActivePlayer, getBoard, checkWinner };
+  return { playRound, getActivePlayer, getBoard, checkWinner, reset};
 }
 
 
@@ -167,6 +168,7 @@ function ScreenController(){
   const game = GameController("PlayerOne" ,"PlayerTwo");
   const boardDiv = document.querySelector(".board");
   const turnDiv = document.querySelector(".turn");
+  const resetBtn = document.querySelector(".reset");
 
   const updateScreen = () => {
     //clear the board
@@ -211,6 +213,11 @@ function ScreenController(){
   }
   boardDiv.addEventListener("click", clickEventHandler);
 
+  resetBtn.addEventListener("click", ()=>{
+    game.reset();
+    updateScreen();
+  });
+  
   //initialize
   updateScreen();
 }
