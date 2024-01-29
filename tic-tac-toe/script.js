@@ -17,13 +17,6 @@ function Gameboard(){
   const cols = 3;
   const board = [];
 
-  for(let i = 0; i < rows; i++){
-    board[i] = [];
-    for(let j = 0; j < cols; j++){
-      board[i].push(Cell()); 
-    }
-  }
-  
   const getBoard = () => board;
 
   const addToken = (player, row, col) => {
@@ -46,13 +39,24 @@ function Gameboard(){
     console.log(b);
   }
 
-  return { getBoard, addToken, printBoard };
+  const reset = () => {
+    for(let i = 0; i < rows; i++){
+      board[i] = [];
+      for(let j = 0; j < cols; j++){
+        board[i].push(Cell()); 
+      }
+    }
+  }
+
+  //initialize
+  reset();
+  return { getBoard, addToken, printBoard, reset };
 }
 
 
 function GameController(PlayerOne, PlayerTwo){
   const board = Gameboard();
-
+  let winner = false;
   
   const players = [
     {
@@ -79,17 +83,19 @@ function GameController(PlayerOne, PlayerTwo){
   }
 
   const playRound = (row, col) => {
+    //check if the game is finished
+    if(winner) return false;
     //need check if token is valid
     if(!board.addToken(getActivePlayer().token, row, col)){
       console.log("Invalid play, try again");
-      return;
-    }
-    if(checkWinner()){
-      announceWinner();
+      return false;
+    }else if(checkWinner()){
+      console.log(`${getActivePlayer().name} has won`);
     }else{
       switchPlayerTurn();
       printRound();
     }
+    return true;
   }
 
   const checkWinner = () => {
@@ -97,7 +103,6 @@ function GameController(PlayerOne, PlayerTwo){
     const rows = tempBoard.length;
     const cols = tempBoard[0].length;
 
-    
     //row checker
     for(let i = 0; i < rows; i++){
       let sum = 0;
@@ -105,6 +110,7 @@ function GameController(PlayerOne, PlayerTwo){
         sum += tempBoard[i][j].getValue();
       }
       if(sum === getActivePlayer().token * rows) {
+        winner = true;
         return true;
       }
     }
@@ -116,6 +122,7 @@ function GameController(PlayerOne, PlayerTwo){
         sum += tempBoard[i][j].getValue();
       }
       if(sum === getActivePlayer().token * rows) {
+        winner = true;
         return true;
       }
     }
@@ -126,6 +133,7 @@ function GameController(PlayerOne, PlayerTwo){
       sum += tempBoard[i][i].getValue();
     }
     if(sum === getActivePlayer().token * rows) {
+      winner = true;
       return true;
     }
   
@@ -135,27 +143,23 @@ function GameController(PlayerOne, PlayerTwo){
       sum += tempBoard[i][rows-i-1].getValue();
     }
     if(sum === getActivePlayer().token * rows) {
+      winner = true;
       return true;
     }
 
     return false;
   }
 
-  const announceWinner = () => {
-    console.log(`${getActivePlayer().name} has won`);
-    reset();
-  }
-
-  
   const reset = () => {
-    //reset board
+    winner = false;
+    board.reset();
   }
 
   const getBoard = () => {
     return board.getBoard();
   }
   
-  return { playRound, getActivePlayer, getBoard };
+  return { playRound, getActivePlayer, getBoard, checkWinner };
 }
 
 
@@ -186,6 +190,11 @@ function ScreenController(){
         boardDiv.appendChild(cell);
       })
     })
+
+    //check winner
+    if(game.checkWinner()){
+      turnDiv.textContent = `${playerTurn.name} has won the game!`
+    }
   }
 
   function clickEventHandler(e) {
@@ -195,11 +204,14 @@ function ScreenController(){
     //make sure the board is selected
     if(!selectedRow) return;
 
-    game.playRound(selectedRow, selectedCol);
-    updateScreen();
+    if(game.playRound(selectedRow, selectedCol)){
+      updateScreen();
+    }
+    
   }
   boardDiv.addEventListener("click", clickEventHandler);
 
+  //initialize
   updateScreen();
 }
 
