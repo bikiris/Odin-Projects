@@ -57,6 +57,7 @@ function Gameboard(){
 function GameController(PlayerOne, PlayerTwo){
   const board = Gameboard();
   let winner = false;
+  let isFull = false;
   
   const players = [
     {
@@ -84,13 +85,15 @@ function GameController(PlayerOne, PlayerTwo){
 
   const playRound = (row, col) => {
     //check if the game is finished
-    if(winner) return false;
+    if(winner || isFull) return false;
     //need check if token is valid
     if(!board.addToken(getActivePlayer().token, row, col)){
       console.log("Invalid play, try again");
       return false;
     }else if(checkWinner()){
       console.log(`${getActivePlayer().name} has won`);
+    }else if(boardIsFull()){
+      console.log("Draw!");
     }else{
       switchPlayerTurn();
       printRound();
@@ -98,6 +101,12 @@ function GameController(PlayerOne, PlayerTwo){
     return true;
   }
 
+  const boardIsFull = () => {
+    const tempBoard = board.getBoard();
+    isFull = tempBoard.every(row => row.every(item => item.getValue() != 0));
+    return isFull;
+  }
+  
   const checkWinner = () => {
     const tempBoard = board.getBoard();
     const rows = tempBoard.length;
@@ -149,18 +158,19 @@ function GameController(PlayerOne, PlayerTwo){
 
     return false;
   }
-
+  
   const reset = () => {
     winner = false;
     board.reset();
     activePlayer = players[0];
+    isFull = false;
   }
 
   const getBoard = () => {
     return board.getBoard();
   }
   
-  return { playRound, getActivePlayer, getBoard, checkWinner, reset};
+  return { playRound, getActivePlayer, getBoard, checkWinner, boardIsFull, reset};
 }
 
 
@@ -196,6 +206,8 @@ function ScreenController(){
     //check winner
     if(game.checkWinner()){
       turnDiv.textContent = `${playerTurn.name} has won the game!`
+    }else if(game.boardIsFull()){
+      turnDiv.textContent = "It is a draw!";
     }
   }
 
