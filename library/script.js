@@ -32,7 +32,7 @@ function addBookToLibrary(book) {
   const b1 = document.createElement("button");
   b1.className = "edit";
   b1.innerHTML = "Edit";
-  
+
   //delete button
   const b2 = document.createElement("button");
   b2.className = "delete";
@@ -42,11 +42,11 @@ function addBookToLibrary(book) {
   actions.appendChild(b1);
   actions.appendChild(b2);
   card.appendChild(actions);
-  b2.addEventListener("click", () => deleteBook(book,b2));
+  b2.addEventListener("click", () => deleteBook(book, b2));
   document.querySelector(".main-content").appendChild(card);
 }
 
-function deleteBook(book,button){
+function deleteBook(book, button) {
   //remove from myLibrary
   let index = findBook(book);
   myLibrary.splice(index, 1);
@@ -56,17 +56,19 @@ function deleteBook(book,button){
   card.remove();
 }
 
-function findBook(book){
-  myLibrary.forEach( (item,idx) => {
-    if(item.title == book.title
-        && item.author == book.author
-        && item.pages == book.pages){
-          return idx;
-      }
-  })
+function findBook(book) {
+  myLibrary.forEach((item, idx) => {
+    if (
+      item.title == book.title &&
+      item.author == book.author &&
+      item.pages == book.pages
+    ) {
+      return idx;
+    }
+  });
 }
 
-function updateLibrary(newBook){
+function updateLibrary(newBook) {
   myLibrary.push(newBook);
   // updates library with every new book leads to performance issue
   // document.querySelector(".main-content").innerHTML = "";
@@ -93,12 +95,12 @@ submitForm.addEventListener("submit", (event) => {
   submitForm.reset();
 });
 
-function toggleTab(){
+function toggleTab() {
   form.classList.toggle("hidden");
   mainContent.classList.toggle("hidden");
 }
 
-function init(){
+function init() {
   updateLibrary(Book("Title", "Author", "Pages"));
 }
 init();
